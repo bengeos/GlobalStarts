@@ -24,7 +24,7 @@ public class NewsFeed extends AppCompatActivity {
         myRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
         myRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new NewsFeedAdapter(this,Global_Start.myDatabase.get_All_News());
+        mAdapter = new NewsFeedAdapter(this,Global_Start.myNewsFeeds);
         myRecyclerView.setAdapter(mAdapter);
     }
 

@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Sync.FileManager;
@@ -27,12 +28,12 @@ import ds.gcme.com.globalstart.Sync.FileManager;
 public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.DataObjectHolder>  {
 
     private static String LOG_TAG = "NewsFeedAdapter";
-    private ArrayList<NewsFeed> NewsFeeds;
+    private static List<NewsFeed> NewsFeeds;
     private static MyClickListener myClickListener;
     private static Context myContext;
     private FileManager myFileManager;
 
-    public NewsFeedAdapter(Context context, ArrayList<NewsFeed> newsFeeds) {
+    public NewsFeedAdapter(Context context, List<NewsFeed> newsFeeds) {
         myContext = context;
         NewsFeeds = newsFeeds;
         myFileManager = new FileManager(myContext);
@@ -57,8 +58,7 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.DataOb
         public void onClick(View v) {
             Intent intent = new Intent(myContext,NewsFeedDetail.class);
             Bundle b = new Bundle();
-            b.putString("news_id",news_id);
-            b.putString("news_image_path",image_path);
+            b.putString("UUID",NewsFeeds.get(getAdapterPosition()).getUUID());
             intent.putExtras(b);
             myContext.startActivity(intent);
         }
@@ -79,21 +79,10 @@ public class NewsFeedAdapter extends RecyclerView.Adapter<NewsFeedAdapter.DataOb
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         holder.Title.setText((NewsFeeds.get(position).getTitle()));
-        holder.Content.setText(NewsFeeds.get(position).getContent());
-        //File imageFile = myFileManager.getFileAt("images", NewsFeeds.get(position).getImagePath());
-        File imageFile = myFileManager.getFileAt("images", "News"+NewsFeeds.get(position).getNews_ID()+".png");
-        Log.i("Global Start:->", imageFile.getAbsolutePath());
-        //Toast.makeText(myContext,"Image Path: "+String.valueOf(imageFile.isFile()),Toast.LENGTH_LONG).show();
-
-        FileInputStream stream = null;
-        try{
-            stream = new FileInputStream(imageFile);
-        }catch (Exception e){
-        }
-        //holder.NewsImage.setImageBitmap(BitmapFactory.decodeStream(stream));
-        Glide.with(myContext).load(imageFile.getAbsolutePath()).into(holder.NewsImage);
-        holder.image_path = imageFile.getAbsolutePath();
-        holder.news_id = NewsFeeds.get(position).getId();
+        holder.Content.setText(NewsFeeds.get(position).getSummary());
+        Glide.with(myContext)
+                .load(NewsFeeds.get(position).getImageURL())
+                .into(holder.NewsImage);
     }
 
     @Override

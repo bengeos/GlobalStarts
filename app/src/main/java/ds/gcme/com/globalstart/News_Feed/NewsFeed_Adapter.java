@@ -10,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Sync.FileManager;
@@ -22,7 +24,7 @@ import ds.gcme.com.globalstart.Sync.FileManager;
  */
 public class NewsFeed_Adapter extends RecyclerView.Adapter<NewsFeed_Adapter.DataObjectHolder> {
     private static String LOG_TAG = "MyRecyclerViewAdapter";
-    private ArrayList<NewsFeed_Object> NewsFeeds;
+    private List<NewsFeed> NewsFeeds;
     private static MyClickListener myClickListener;
     private static Context myContext;
     private FileManager fileManager;
@@ -54,11 +56,9 @@ public class NewsFeed_Adapter extends RecyclerView.Adapter<NewsFeed_Adapter.Data
     public void setOnItemClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
     }
-    public NewsFeed_Adapter(Context context, ArrayList<NewsFeed_Object> newsFeeds){
+    public NewsFeed_Adapter(Context context, List<NewsFeed> newsFeeds){
         this.NewsFeeds = newsFeeds;
         this.myContext = context;
-        fileManager = new FileManager(context);
-
     }
     @Override
     public int getItemCount() {
@@ -72,18 +72,15 @@ public class NewsFeed_Adapter extends RecyclerView.Adapter<NewsFeed_Adapter.Data
     }
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-
-//        holder.Title.setText(NewsFeeds.get(position).getTitle());
-//      //  File file = fileManager.Create_ImageFile("Image"+NewsFeeds.get(position).getNewsID()+".jpg");
-//        if(file != null){
-//            Bitmap image = BitmapFactory.decodeFile(file.getAbsolutePath());
-//            holder.Image.setImageBitmap(image);
-//        }
-//        holder.Content.setText(NewsFeeds.get(position).getContent());
-//        holder.dateTime.setText(NewsFeeds.get(position).getPub_Date());
+        holder.Title.setText(NewsFeeds.get(position).getTitle());
+        holder.Content.setText(NewsFeeds.get(position).getDetail());
+        holder.dateTime.setText(NewsFeeds.get(position).getPubDate());
+        Glide.with(myContext)
+                .load(NewsFeeds.get(position).getImageURL())
+                .into(holder.Image);
 
     }
-    public void addItem(NewsFeed_Object news){
+    public void addItem(NewsFeed news){
         NewsFeeds.add(news);
     }
     public interface MyClickListener {

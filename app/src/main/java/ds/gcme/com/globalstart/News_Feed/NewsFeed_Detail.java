@@ -34,7 +34,6 @@ public class NewsFeed_Detail extends AppCompatActivity {
         getSupportActionBar().setTitle("Global Start");
         getSupportActionBar().setSubtitle("News Feed");
         myContext = this;
-
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         final List<News_Data> news = new ArrayList<News_Data>();

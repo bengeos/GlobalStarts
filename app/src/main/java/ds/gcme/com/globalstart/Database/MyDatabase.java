@@ -95,41 +95,41 @@ public class MyDatabase {
         return found;
     }
 
-    public ArrayList<NewsFeed> get_All_News(){
-        ArrayList<NewsFeed> found = new ArrayList<NewsFeed>();
-        String DB_Table = Table_NewsFeed;
-        String[] Table_Fields = NewsFeed_FIELDS;
-        Cursor c = myDatabase.query(DB_Table, Table_Fields, null, null, null, null, null);
-        c.moveToFirst();
-        for(int i=0;i<c.getCount();i++){
-            c.moveToPosition(i);
-            NewsFeed dis = new NewsFeed();
-            dis.setNews_ID(c.getString(c.getColumnIndex(NewsFeed_FIELDS[0])));
-            dis.setTitle(c.getString(c.getColumnIndex(NewsFeed_FIELDS[1])));
-            dis.setContent(c.getString(c.getColumnIndex(NewsFeed_FIELDS[2])));
-            dis.setImageURL(c.getString(c.getColumnIndex(NewsFeed_FIELDS[3])));
-            found.add(dis);
-        }
-        return found;
-    }
-    public NewsFeed get_NewsFeed_by_NewsID(String news_id){
-        String DB_Table = Table_NewsFeed;
-        String[] Table_Fields = NewsFeed_FIELDS;
-        Cursor c = myDatabase.query(DB_Table, Table_Fields, null, null, null, null, null);
-        c.moveToFirst();
-        for(int i=0;i<c.getCount();i++){
-            c.moveToPosition(i);
-            NewsFeed dis = new NewsFeed();
-            dis.setNews_ID(c.getString(c.getColumnIndex(NewsFeed_FIELDS[0])));
-            dis.setTitle(c.getString(c.getColumnIndex(NewsFeed_FIELDS[1])));
-            dis.setContent(c.getString(c.getColumnIndex(NewsFeed_FIELDS[2])));
-            dis.setImageURL(c.getString(c.getColumnIndex(NewsFeed_FIELDS[3])));
-            if(dis.getNews_ID().equals(news_id)){
-                return dis;
-            }
-        }
-        return null;
-    }
+//    public ArrayList<NewsFeed> get_All_News(){
+//        ArrayList<NewsFeed> found = new ArrayList<NewsFeed>();
+//        String DB_Table = Table_NewsFeed;
+//        String[] Table_Fields = NewsFeed_FIELDS;
+//        Cursor c = myDatabase.query(DB_Table, Table_Fields, null, null, null, null, null);
+//        c.moveToFirst();
+//        for(int i=0;i<c.getCount();i++){
+//            c.moveToPosition(i);
+//            NewsFeed dis = new NewsFeed();
+//            dis.setNews_ID(c.getString(c.getColumnIndex(NewsFeed_FIELDS[0])));
+//            dis.setTitle(c.getString(c.getColumnIndex(NewsFeed_FIELDS[1])));
+//            dis.setContent(c.getString(c.getColumnIndex(NewsFeed_FIELDS[2])));
+//            dis.setImageURL(c.getString(c.getColumnIndex(NewsFeed_FIELDS[3])));
+//            found.add(dis);
+//        }
+//        return found;
+//    }
+//    public NewsFeed get_NewsFeed_by_NewsID(String news_id){
+//        String DB_Table = Table_NewsFeed;
+//        String[] Table_Fields = NewsFeed_FIELDS;
+//        Cursor c = myDatabase.query(DB_Table, Table_Fields, null, null, null, null, null);
+//        c.moveToFirst();
+//        for(int i=0;i<c.getCount();i++){
+//            c.moveToPosition(i);
+//            NewsFeed dis = new NewsFeed();
+//            dis.setNews_ID(c.getString(c.getColumnIndex(NewsFeed_FIELDS[0])));
+//            dis.setTitle(c.getString(c.getColumnIndex(NewsFeed_FIELDS[1])));
+//            dis.setContent(c.getString(c.getColumnIndex(NewsFeed_FIELDS[2])));
+//            dis.setImageURL(c.getString(c.getColumnIndex(NewsFeed_FIELDS[3])));
+//            if(dis.getNews_ID().equals(news_id)){
+//                return dis;
+//            }
+//        }
+//        return null;
+//    }
     public ArrayList<NewsFeed_Object> get_All_News_Object(){
         ArrayList<NewsFeed_Object> found = new ArrayList<NewsFeed_Object>();
         String DB_Table = Table_NewsFeed;

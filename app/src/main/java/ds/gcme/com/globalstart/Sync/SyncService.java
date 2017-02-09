@@ -80,12 +80,12 @@ public class SyncService extends JobService {
 //            }
 //        });
 
-        ArrayList<NewsFeed> newsFeeds = Global_Start.myDatabase.get_All_News();
+        List<NewsFeed> newsFeeds = Global_Start.myNewsFeeds;
         if(newsFeeds.size()>0){
             if(newsFeeds.size()<2){
                 for(int i = 0; i<newsFeeds.size();i++){
                     //String image_name = "image"+newsFeeds.get(i).getNews_ID()+".png";
-                    String image_name = "news"+newsFeeds.get(i).getNews_ID()+".png";
+                    String image_name = "news"+newsFeeds.get(i).getUUID()+".png";
                     Log.i(TAG, "Downloading:->" + image_name);
                     File image_file = myFileManager.createFileAt("images", image_name);
                     if(!image_file.isFile()){
@@ -96,7 +96,7 @@ public class SyncService extends JobService {
             } else{
                 int count = 0;
                 for(int i = 0; i<newsFeeds.size();i++){
-                    String image_name = "News"+newsFeeds.get(i).getNews_ID()+".png";
+                    String image_name = "News"+newsFeeds.get(i).getUUID()+".png";
                     Log.i(TAG, "Downloading:->" + image_name);
 //                        File image_file = myFileManager.getFileAt("images",image_name);
                     File image_file = myFileManager.createFileAt("images", image_name);
