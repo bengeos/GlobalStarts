@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 
 import ds.gcme.com.globalstart.Global_Start;
 import ds.gcme.com.globalstart.R;
+import ds.gcme.com.globalstart.Sync.SyncService;
 
 
 /**
@@ -52,9 +53,9 @@ public class NewsFeedDetail extends AppCompatActivity {
         updateView();
     }
     public static void updateView(){
-        for(int i=0;i<Global_Start.myNewsFeeds.size();i++){
-            if(Global_Start.myNewsFeeds.get(i).getUUID().equals(newsUUID)){
-                myNewsFeed = Global_Start.myNewsFeeds.get(i);
+        for(int i = 0; i< SyncService.myNewsFeeds.size(); i++){
+            if(SyncService.myNewsFeeds.get(i).getUUID().equals(newsUUID)){
+                myNewsFeed = SyncService.myNewsFeeds.get(i);
             }
         }
         if(myNewsFeed != null){

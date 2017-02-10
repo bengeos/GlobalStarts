@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import ds.gcme.com.globalstart.Database.MyDatabase;
 import ds.gcme.com.globalstart.Global_Start;
 import ds.gcme.com.globalstart.R;
+import ds.gcme.com.globalstart.Sync.SyncService;
 
 /**
  * Created by BENGEOS on 3/17/16.
@@ -35,12 +36,13 @@ public class NewsFeed_Fragment extends Fragment {
         myRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
         mLayoutManager = new LinearLayoutManager(getActivity());
         myRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new NewsFeed_Adapter(getActivity(), Global_Start.myNewsFeeds);
+        mAdapter = new NewsFeed_Adapter(getActivity(), SyncService.myNewsFeeds);
         myRecyclerView.setAdapter(mAdapter);
         myContext = getActivity();
         return view;
     }
     public static void update_view(){
-        mAdapter.notifyDataSetChanged();
+        mAdapter = new NewsFeed_Adapter(myContext, SyncService.myNewsFeeds);
+        myRecyclerView.setAdapter(mAdapter);
     }
 }

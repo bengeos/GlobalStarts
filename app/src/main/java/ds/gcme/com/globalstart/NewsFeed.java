@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import ds.gcme.com.globalstart.News_Feed.NewsFeedAdapter;
+import ds.gcme.com.globalstart.Sync.SyncService;
 
 /**
  * Created by bengeos on 6/29/16.
@@ -24,7 +25,7 @@ public class NewsFeed extends AppCompatActivity {
         myRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mLayoutManager = new LinearLayoutManager(this);
         myRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new NewsFeedAdapter(this,Global_Start.myNewsFeeds);
+        mAdapter = new NewsFeedAdapter(this, SyncService.myNewsFeeds);
         myRecyclerView.setAdapter(mAdapter);
     }
 
