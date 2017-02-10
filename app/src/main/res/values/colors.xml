@@ -9,4 +9,6 @@
     <color name="colorLightBlue">#467df0</color>
     <color name="colorLightWhite">#a8a8a8</color>
     <color name="colorDarkWhite">#cacaca</color>
+
+    <color name="background">#4886c5</color>
 </resources>

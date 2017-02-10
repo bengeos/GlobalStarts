@@ -45,8 +45,6 @@ public class SendTestimony extends DialogFragment {
         myTestimonyRef = database.getReference("Testimonies");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        String txtTitle = getArguments().getString("Title");
-        String txtMore = getArguments().getString("Detail");
         View view = inflater.inflate(R.layout.fragment_view_testimony,null);
         myProgressDialog = new ProgressDialog(getActivity());
 
@@ -66,10 +64,15 @@ public class SendTestimony extends DialogFragment {
                 testimony.setDetail(Content.getText().toString());
                 myTestimonyRef.push().setValue(testimony);
                 myProgressDialog.cancel();
+
+                Toast.makeText(getActivity(),getString(R.string.testimony_send_success),Toast.LENGTH_LONG).show();
+                SendTestimony.this.getDialog().cancel();
+
             }
         });
+
         builder.setView(view)
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         SendTestimony.this.getDialog().cancel();

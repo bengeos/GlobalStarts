@@ -37,8 +37,11 @@ public class Learn_Understand_Youth extends AppCompatActivity {
 
         title = "Understand the Youth .. ";
         content = "In order to minister most effectively, you need to know who you are ministering to." +
-                "\n\n• What is on their hearts – their joys, burdens, desires, hopes and dreams? \\n• What are their greatest needs? \\n• What outside influences affect their lives? \\n• What are their personal challenges: peer pressure, bullying, performance, parental neglect, home life? " +
-                "\n\n The more you understand them, the more you will be able to use practical and effective ways to reach them.";
+                "\n \n• What is on their hearts – their joys, burdens, desires, hopes and dreams? " +
+                "\n• What are their greatest needs? \n• What outside influences affect their lives? " +
+                "\n• What are their personal challenges: peer pressure, bullying, performance, parental neglect, home life? " +
+
+                "\n \nThe more you understand them, the more you will be able to use practical and effective ways to reach them.";
 
 //        String title = getIntent().getExtras().getString("title");
 //        String content = getIntent().getExtras().getString("desc");

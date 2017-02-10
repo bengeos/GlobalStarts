@@ -142,18 +142,15 @@ public class MainActivity  extends AppCompatActivity {
             startActivity(intent);
         }
         else if(position==6){
+
             SendTestimony more = new SendTestimony();
-            Bundle b = new Bundle();
-            b.putString("Title","Contact Us");
-            b.putString("Detail", "This App is a global start application which aims to bring about a chhnage in the way the society acts and walks in his way which Christ. \n");
-            more.setArguments(b);
-            more.show(getFragmentManager(),"Contact us");
+            more.show(getFragmentManager(),"Send Testimony");
         }
         else if(position==7){
             MoreOptions more = new MoreOptions();
             Bundle b = new Bundle();
-            b.putString("Title","About Us");
-            b.putString("Detail", "This App is a global start application which aims to bring about a change in the way the society acts and walks in his way which Christ. \n");
+            b.putString("Title",getString(R.string.about_us));
+            b.putString("Detail", getString(R.string.about_description));
             more.setArguments(b);
             more.show(getFragmentManager(),"About us");
         }
@@ -167,17 +164,18 @@ public class MainActivity  extends AppCompatActivity {
             more.show(getFragmentManager(),"Contact us");
         }
     }
+
     private void setupGridMenu() {
         List<GridMenu> menus = new ArrayList<>();
-        menus.add(new GridMenu("News Feed", R.drawable.home));
+        menus.add(new GridMenu("News Feed", R.drawable.news));
         menus.add(new GridMenu("Intro", R.drawable.calendar));
-        menus.add(new GridMenu("God's Heart", R.drawable.overview));
-        menus.add(new GridMenu("Learn", R.drawable.groups));
+        menus.add(new GridMenu("God's Heart", R.drawable.godsheart));
+        menus.add(new GridMenu("Learn", R.drawable.learn));
         menus.add(new GridMenu("Do", R.drawable.lists));
-        menus.add(new GridMenu("Goal", R.drawable.profile));
-        menus.add(new GridMenu("Testimony", R.drawable.profile));
+        menus.add(new GridMenu("Goal", R.drawable.goal));
+        menus.add(new GridMenu("Testimony", R.drawable.testimony));
         menus.add(new GridMenu("About", R.drawable.profile));
-        menus.add(new GridMenu("Contact", R.drawable.profile));
+        menus.add(new GridMenu("Contact", R.drawable.contact));
 
         mGridMenuFragment.setupMenu(menus);
     }

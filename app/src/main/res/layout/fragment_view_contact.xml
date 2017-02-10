@@ -32,7 +32,7 @@
                     style="@style/Widget.CardContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorBlue"
+                    android:background="@color/background"
                     >
 
                     <TextView
@@ -66,21 +66,18 @@
                      android:id="@+id/menu_find_fb"
                      android:layout_width="match_parent"
                      android:layout_height="match_parent"
-                     android:background="@color/colorOrange"
                      android:text="Find us on Facebook"
                      />
                 <Button
                     android:id="@+id/menu_find_twitter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorOrange"
                     android:text="Find us on Twitter"
                     />
                 <Button
                     android:id="@+id/menu_find_website"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorOrange"
                     android:text="Visit our website"
                     />
 
