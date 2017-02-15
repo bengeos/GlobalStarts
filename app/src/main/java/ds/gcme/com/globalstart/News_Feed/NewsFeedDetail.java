@@ -49,7 +49,7 @@ public class NewsFeedDetail extends AppCompatActivity {
 //        newsFeed = Global_Start.myDatabase.get_NewsFeed_by_NewsID(news_id);
         collapsingToolbarLayout.setTitle("Deep Life NewsFeeds");
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-        Toast.makeText(this,""+newsUUID,Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,""+newsUUID,Toast.LENGTH_LONG).show();
         updateView();
     }
     public static void updateView(){

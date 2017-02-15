@@ -53,7 +53,7 @@ public class SyncService {
             SyncNews();
             Log.d(TAG, "Start Sign in Checked Signed in:" + user.getUid());
         }else {
-            Log.d(TAG, "Try Sign in Again");
+            Log.d(TAG, "Trying to Sign in Again");
             myAuth.signInWithEmailAndPassword("george.beng@gmail.com","passben").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
