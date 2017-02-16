@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Goal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +23,8 @@ public class Goal_Sowing_Evangelism extends AppCompatActivity {
 
     String title;
     String content;
+    private Context myContext;
+    private Button NextPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +40,23 @@ public class Goal_Sowing_Evangelism extends AppCompatActivity {
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
 
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Building and equipping people");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Goal_Sowing_Evangelism.this, Goal_Build.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
+
         title = "Sowing and Evangelism.. ";
         content = "Sowing and Evangelism with access to the school" +
                 "\n\nTalk to teachers, headmasters, principals, students, churches and parents to find the schools that are most open to you serving them and/or having a Christian influence. In some schools you will be able to talk about Christ. In other schools you will only be able to talk about felt needs and share Christ outside of the school." +
-                "Become an insider within the school through serving them. As you serve you can meet and begin to develop relationships with students in school, at lunch, after school, or any way that you can gain access to them. \n" +
+                "\nBecome an insider within the school through serving them. As you serve you can meet and begin to develop relationships with students in school, at lunch, after school, or any way that you can gain access to them. \n" +
 
                 "\n\nIdeas to serve the school: " +
                 "\n• Offer school-wide events and programs through athletic competitions, motivational speakers and fun activities. " +

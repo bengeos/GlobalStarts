@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.GodHeart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ds.gcme.com.globalstart.Learn.SubMenu_Learn;
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Share;
 
@@ -18,6 +22,8 @@ public class GodHeart_Take_Action extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image,detail_image;
     TextView tv_title, tv_content;
+    private Button NextPage;
+    private Context myContext;
 
     String title;
     String content;
@@ -31,15 +37,27 @@ public class GodHeart_Take_Action extends AppCompatActivity {
         image.setImageResource(R.drawable.img_take_action);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        myContext = this;
 
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
 
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Understand The Youth");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GodHeart_Take_Action.this, SubMenu_Learn.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
+
         title = "Take Action ";
         content = "\nDo you believe that teenagers can make an impact?  God does and He is ready to burn that passion within their hearts that will set them ablaze by the Holy Spirit to make an eternal spiritual difference! " +
                 "\n\nTaking Action" +
-                "\n\nWhen you look at teenagers today, what grieves your heart? \\nWhat is your vision for the teenagers of your country? \\n What potential do you see in them? " +
+                "\n\nWhen you look at teenagers today, what grieves your heart? \nWhat is your vision for the teenagers of your country? \nWhat potential do you see in them? " +
                 "\n\nHow can you involve teenagers in your country to reach their schools and communities; their country and the world?";
 
 //        String title = getIntent().getExtras().getString("title");

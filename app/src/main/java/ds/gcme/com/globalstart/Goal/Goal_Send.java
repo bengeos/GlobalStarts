@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Goal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +23,8 @@ public class Goal_Send extends AppCompatActivity {
 
     String title;
     String content;
+    private Context myContext;
+    private Button NextPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,18 @@ public class Goal_Send extends AppCompatActivity {
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Building Spiritual Movement");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Goal_Send.this, Goal_Movement.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Send .. ";
         content = "\nAnd these things you have heard me say in the presence of many witnesses entrust to reliable men who will also be qualified to teach others” (2 Timothy 2:2). \\n\\nTeenagers can be leaders. They have been called to multiply their faith. Just as Jesus trained His young disciples to carry on the ministry you can train your students to multiply their faith to their friends, school, country and to the world (Acts 1:8)!" +

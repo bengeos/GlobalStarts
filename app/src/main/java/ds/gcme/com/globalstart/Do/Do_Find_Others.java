@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Do;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +24,8 @@ public class Do_Find_Others extends AppCompatActivity {
 
     String title;
     String content;
+    private Button NextPage;
+    private Context myContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +41,21 @@ public class Do_Find_Others extends AppCompatActivity {
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
 
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Take Action");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Do_Find_Others.this, Do_Take_Action.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
+
         title = "Find Others to help .. ";
         content = "Jesus chose 12 disciples and many others to help fulfill His purposes. He chose those who were teachable and willing to count the cost." +
-                "\n\n1. You will also need people who will join you in the mission to reach high school students. There are many opportunities to help, such as being a part of your prayer team, helping to reach and disciple students, giving financially, providing access to the schools, helping with special events, providing food, giving administrative assistance, and so much more." +
+                "\n\nYou will also need people who will join you in the mission to reach high school students. There are many opportunities to help, such as being a part of your prayer team, helping to reach and disciple students, giving financially, providing access to the schools, helping with special events, providing food, giving administrative assistance, and so much more." +
                 "\n\nHere are some things to look for in volunteers: " +
                 "\n• A growing relationship with God and reliance on the power of the Holy Spirit " +
                 "\n• A heart for high school students " +

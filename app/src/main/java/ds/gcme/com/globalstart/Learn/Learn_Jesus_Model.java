@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Learn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +21,8 @@ public class Learn_Jesus_Model extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image,detail_image;
     TextView tv_title, tv_content;
+    private Button NextPage;
+    private Context myContext;
 
     String title;
     String content;
@@ -32,9 +37,21 @@ public class Learn_Jesus_Model extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("How to learn");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Learn_Jesus_Model.this, Learn_How_To_Learn.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Jesus modeled this ... ";
         content = "In John 4:6-18 Jesus knew the Samaritan woman’s greatest need was for love, affection and a sense of worth. He knew it was not being fulfilled through relationships with men, so He offered her Living Water to fill her deepest need and her spiritual thirst." +

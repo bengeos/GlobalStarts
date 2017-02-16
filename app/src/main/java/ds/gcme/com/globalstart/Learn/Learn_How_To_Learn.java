@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Learn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +21,8 @@ public class Learn_How_To_Learn extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image,detail_image;
     TextView tv_title, tv_content;
+    private Button NextPage;
+    private Context myContext;
 
     String title;
     String content;
@@ -30,11 +35,24 @@ public class Learn_How_To_Learn extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.image);
         image.setImageResource(R.drawable.img_howtolearn);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Take Action");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Learn_How_To_Learn.this, Learn_Take_Action.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "How to Learn .. ";
         content = "Jesus modeled the importance of knowing the real issues in the lives of those He ministered to and we must do the same. With the youth culture changing so rapidly we must constantly observe and ask questions to know how we can minister effectively. We must ASK, LOOK and LISTEN. " +

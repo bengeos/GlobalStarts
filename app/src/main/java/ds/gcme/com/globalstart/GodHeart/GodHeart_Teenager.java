@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.GodHeart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ds.gcme.com.globalstart.Intro;
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Share;
 
@@ -17,6 +21,8 @@ public class GodHeart_Teenager extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image,detail_image;
     TextView tv_title, tv_content;
+    private Button NextPage;
+    private Context myContext;
 
     String title;
     String content;
@@ -30,15 +36,26 @@ public class GodHeart_Teenager extends AppCompatActivity {
         image.setImageResource(R.drawable.img_teenager);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        myContext = this;
 
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
 
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Biblical Example");
+
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GodHeart_Teenager.this, GodHeart_Examples.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
+
         title = "God's Heart for Teenager ";
-        content = "Throughout history, God has chosen teenagers to help start revivals, lead spiritual movements, rule nations and change societies. He still involves them today. God desires to change students’ lives and give them a passion for Christ. They are vital in helping to fulfill the Great Commission.   " +
-                "\n\nWith faith and dependence on the Lord, take these principles and use them in your country and watch what God will do in and through the lives of teenagers." +
-                "\n\nWith faith and dependence on the Lord, take these principles and use them in your country and watch what God will do in and through the lives of teenagers.";
+        content = "Throughout history, God has chosen teenagers to help start revivals, lead spiritual movements, rule nations and change societies. He still involves them today. God desires to change students’ lives and give them a passion for Christ. They are vital in helping to fulfill the Great Commission.";
 
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);

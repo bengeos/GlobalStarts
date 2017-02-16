@@ -5,7 +5,7 @@ package ds.gcme.com.globalstart.Model;
  */
 
 public class Testimony {
-    private String Title,Detail;
+    private String Title,Detail,User;
 
     public String getTitle() {
         return Title;
@@ -21,5 +21,13 @@ public class Testimony {
 
     public void setDetail(String detail) {
         Detail = detail;
+    }
+
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String user) {
+        User = user;
     }
 }

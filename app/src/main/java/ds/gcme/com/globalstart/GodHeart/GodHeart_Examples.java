@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.GodHeart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +20,8 @@ public class GodHeart_Examples extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image,detail_image;
     TextView tv_title, tv_content;
+    private Button NextPage;
+    private Context myContext;
 
     String title;
     String content;
@@ -30,10 +35,22 @@ public class GodHeart_Examples extends AppCompatActivity {
         image.setImageResource(R.drawable.img_biblicalexamples);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        myContext = this;
 
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Take Action");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GodHeart_Examples.this, GodHeart_Take_Action.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Biblical Examples ";
         content = "As a youth, God called Josiah to turn an evil and idolatrous nation to one who sought after God" +

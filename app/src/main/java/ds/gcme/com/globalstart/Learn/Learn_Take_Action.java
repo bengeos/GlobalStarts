@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Learn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ds.gcme.com.globalstart.Do.SubMenu_Do;
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Share;
 
@@ -21,6 +25,8 @@ public class Learn_Take_Action extends AppCompatActivity {
 
     String title;
     String content;
+    private Context myContext;
+    private Button NextPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,18 @@ public class Learn_Take_Action extends AppCompatActivity {
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Prayer is very important");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Learn_Take_Action.this, SubMenu_Do.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Take Action .. ";
         content = "\nWrite a survey of 5 -10 questions to get to know the teenage culture. Continue to survey as many students as you can and never stop learning about students and their lives!\n";

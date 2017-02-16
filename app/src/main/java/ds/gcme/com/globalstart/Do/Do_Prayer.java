@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Do;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,9 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ds.gcme.com.globalstart.Learn.Learn_How_To_Learn;
+import ds.gcme.com.globalstart.Learn.Learn_Take_Action;
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Share;
 
@@ -17,6 +22,9 @@ public class Do_Prayer extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image,detail_image;
     TextView tv_title, tv_content;
+
+    private Context myContext;
+    private Button NextPage;
 
     String title;
     String content;
@@ -34,6 +42,19 @@ public class Do_Prayer extends AppCompatActivity {
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Find others to help");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Do_Prayer.this, Do_Find_Others.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Pray .. ";
         content = "Jesus had compassion for people, knowing that they were harassed and helpless, like sheep without a Shepherd (Matthew 9:36). Throughout Jesus’ ministry He would go away often to be with His Father and to pray (Luke 5:16). Prayer is the most important part of ministry. It expresses dependence on God and not on ourselves." +

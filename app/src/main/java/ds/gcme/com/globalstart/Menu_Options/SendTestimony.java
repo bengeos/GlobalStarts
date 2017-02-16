@@ -31,7 +31,7 @@ import ds.gcme.com.globalstart.R;
 
 public class SendTestimony extends DialogFragment {
 
-    private EditText Title,Content;
+    private EditText Title,Content,User;
     private Button Send;
     private static final String TAG = "Send_Testimony";
     private ProgressDialog myProgressDialog;
@@ -49,6 +49,7 @@ public class SendTestimony extends DialogFragment {
         myProgressDialog = new ProgressDialog(getActivity());
 
         Title = (EditText) view.findViewById(R.id.testimony_title);
+        User = (EditText) view.findViewById(R.id.testimony_user);
         Content = (EditText) view.findViewById(R.id.testimony_content);
         Send = (Button) view.findViewById(R.id.testimony_send);
 
@@ -60,11 +61,11 @@ public class SendTestimony extends DialogFragment {
                 myProgressDialog.setCancelable(false);
                 myProgressDialog.setTitle("Sending your testimony");
                 Testimony testimony = new Testimony();
+                testimony.setUser(User.getText().toString());
                 testimony.setTitle(Title.getText().toString());
                 testimony.setDetail(Content.getText().toString());
                 myTestimonyRef.push().setValue(testimony);
                 myProgressDialog.cancel();
-
                 Toast.makeText(getActivity(),getString(R.string.testimony_send_success),Toast.LENGTH_LONG).show();
                 SendTestimony.this.getDialog().cancel();
 

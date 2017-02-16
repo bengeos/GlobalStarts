@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Goal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ds.gcme.com.globalstart.Do.Do_Take_Action;
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Share;
 
@@ -20,6 +24,8 @@ public class Goal_Know_Goal extends AppCompatActivity {
 
     String title;
     String content;
+    private Button NextPage;
+    private Context myContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,18 @@ public class Goal_Know_Goal extends AppCompatActivity {
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Win People");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Goal_Know_Goal.this, Goal_Win.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Know the Goal .. ";
         content = "Jesus went from town to town preaching the Good News. He spoke to the masses and ate dinner with individuals. He chose 12 ordinary men to disciple, train and pour His life into. Jesus modeled His life and taught them to love, serve, pray, and minister to others. Then He equipped them with the Word and the Holy Spirit and sent them out to disciple the nations." +

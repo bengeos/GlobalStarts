@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Goal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +23,8 @@ public class Goal_Win extends AppCompatActivity {
 
     String title;
     String content;
+    private Context myContext;
+    private Button NextPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,18 @@ public class Goal_Win extends AppCompatActivity {
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Sowing and Evangelism");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Goal_Win.this, Goal_Sowing_Evangelism.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Win .. ";
         content = "In Mark 16:15 Jesus said to His disciples, “Go into all the world and preach the good news to all creation.” Jesus went out. Paul, Timothy, the disciples and many others also went out and proclaimed the Good News. We are also called to go!" +

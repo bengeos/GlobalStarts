@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Goal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +24,8 @@ public class Goal_Build extends AppCompatActivity {
 
     String title;
     String content;
+    private Context myContext;
+    private Button NextPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,18 @@ public class Goal_Build extends AppCompatActivity {
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+
+        myContext = this;
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("Send people you won and built");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Goal_Build.this, Goal_Send.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Build .. ";
         content = "In Matthew 28:19-20, Jesus says, “Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, and teaching them to obey everything I have commanded you. And surely I am with you always, to the very end of the age.” \\n\\n Jesus spent time with His disciples, modeling His life and ministry and helping them grow into people who would continue a ministry of evangelism and discipleship long after He was gone (John 14:12)." +

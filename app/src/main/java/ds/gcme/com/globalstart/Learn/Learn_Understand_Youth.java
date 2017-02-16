@@ -1,5 +1,6 @@
 package ds.gcme.com.globalstart.Learn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -7,9 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import ds.gcme.com.globalstart.GodHeart.GodHeart_Take_Action;
 import ds.gcme.com.globalstart.R;
 import ds.gcme.com.globalstart.Share;
 
@@ -17,6 +21,8 @@ public class Learn_Understand_Youth extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     ImageView image,detail_image;
     TextView tv_title, tv_content;
+    private Button NextPage;
+    private Context myContext;
 
     String title;
     String content;
@@ -29,11 +35,22 @@ public class Learn_Understand_Youth extends AppCompatActivity {
         image = (ImageView) findViewById(R.id.image);
         image.setImageResource(R.drawable.img_understandyouth);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
-       getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        myContext = this;
 
         detail_image = (ImageView) findViewById(R.id.detail_image);
         tv_title = (TextView) findViewById(R.id.txt_news_detail_title);
         tv_content = (TextView) findViewById(R.id.txt_news_detail_content);
+        NextPage = (Button) findViewById(R.id.btn_gods_heart);
+        NextPage.setText("How did Jesus do it");
+        NextPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Learn_Understand_Youth.this, Learn_Jesus_Model.class);
+                myContext.startActivity(intent);
+                finish();
+            }
+        });
 
         title = "Understand the Youth .. ";
         content = "In order to minister most effectively, you need to know who you are ministering to." +
